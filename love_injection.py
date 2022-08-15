@@ -14,15 +14,16 @@ t = (
     (2, 1), #スコ
 )
 
-cur_st, nxt_st = 1, 1
-
+cur_st = [1]
+nxt_st = [1]
 [
     [
         [
-            (cur_st:=nxt_st),
-            (nxt_st:=t[cur_st][w]),
+            cur_st.append(nxt_st.pop()),
+            cur_st.pop(0),
+            nxt_st.append(t[cur_st[0]][w]),
             print(wt[w], end=''),
-            print('❤❤ラブ注入❤❤', end='') if cur_st == 4 and w == 1 else None,
+            print('❤❤ラブ注入❤❤', end='') if cur_st[0] == 4 and w == 1 else None,
         ]
         for w in (random.choice((0,1)),)
     ]
